@@ -18,7 +18,7 @@ define Package/wlanblinker
 	DEPENDS+=+!BUSYBOX_DEFAULT_AWK:gawk
 	DEPENDS+=+!BUSYBOX_DEFAULT_GREP:grep
 	TITLE:=WLAN Blinker Service
-	URL:=https://docs.openwrt.melmac.net/wlanblinker/
+	URL:=https://github.com/stangri/wlanblinker/
 	PKGARCH:=all
 endef
 

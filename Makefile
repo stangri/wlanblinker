@@ -5,7 +5,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=wlanblinker
 PKG_VERSION:=0.0.1
-PKG_RELEASE:=10
+PKG_RELEASE:=11
 PKG_LICENSE:=AGPL-3.0-or-later
 PKG_MAINTAINER:=Stan Grishin <stangri@melmac.ca>
 
@@ -49,23 +49,23 @@ endef
 
 
 define Package/wlanblinker/postinst
-	#!/bin/sh
-	# check if we are on real system
-	if [ -z "$${IPKG_INSTROOT}" ]; then
-		/etc/init.d/wlanblinker enable
-	fi
-	exit 0
+#!/bin/sh
+# check if we are on real system
+if [ -z "$${IPKG_INSTROOT}" ]; then
+	/etc/init.d/wlanblinker enable
+fi
+exit 0
 endef
 
 define Package/wlanblinker/prerm
-	#!/bin/sh
-	# check if we are on real system
-	if [ -z "$${IPKG_INSTROOT}" ]; then
-		echo "Stopping service and removing rc.d symlink for wlanblinker"
-		/etc/init.d/wlanblinker stop || true
-		/etc/init.d/wlanblinker disable
-	fi
-	exit 0
+#!/bin/sh
+# check if we are on real system
+if [ -z "$${IPKG_INSTROOT}" ]; then
+	echo "Stopping service and removing rc.d symlink for wlanblinker"
+	/etc/init.d/wlanblinker stop || true
+	/etc/init.d/wlanblinker disable
+fi
+exit 0
 endef
 
 $(eval $(call BuildPackage,wlanblinker))
